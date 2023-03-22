@@ -1,0 +1,16 @@
+form {
+  text-align: center;
+}
+
+h1,
+h2,
+h3 {
+  color: blue;
+  text-align: center;
+  margin: 20px;
+  font-size: 40px;
+}
+
+.iclass {
+  text-align: center;
+}
