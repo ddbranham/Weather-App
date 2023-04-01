@@ -44,6 +44,15 @@ h3 {
   position: relative;
 }
 
+units .active {
+  colro: #000;
+  cursor: default;
+}
+
+units .active:hover {
+  text-decoration: none;
+}
+
 .weather-icon-top-center {
   height: 50px;
   display: block;
