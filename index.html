@@ -14,7 +14,6 @@
         <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
         <link rel="stylesheet" href="src/styles.css" />
         <title>Weather App</title>
-        <script src="https://kit.fontawesome.com/d6efaf9aab.js" crossorigin="anonymous"></script>
         </head>
       <body>
         <div class="container">
@@ -54,8 +53,8 @@
               </span>
               </h2>                     
             <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Weather_icon_-_sunny.svg/768px-Weather_icon_-_sunny.svg.png?20171221205138" 
-            alt="sunny icon"
+            src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-day.png" 
+            alt="clear-sky-day"
             class="weather-icon-top-center"     
             <h3 class="humidity-wind" id="description">            
             </h3>
@@ -84,8 +83,9 @@
                   <div class="card-body">
                     <p class="card-text">Today</p>
                   </div>
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Weather_icon_-_sunny.svg/768px-Weather_icon_-_sunny.svg.png?20171221205138" 
-                    alt="weather-icon">
+                  <img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-day.png" 
+                    alt="clear-sky-day">
+                    id="icon"
                   <div class="card-body">
                     <p class="card-text">30° | 61°</p>
                   </div>
@@ -96,8 +96,8 @@
                 <div class="card-body">
                   <p class="card-text">Fri</p>
                 </div>
-                <img src="https://cdn-icons-png.flaticon.com/512/1959/1959334.png" 
-                  alt="weather-icon">
+                <img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/thunderstorm-day.png" 
+                  alt="thunderstorm-day">
                 <div class="card-body">
                   <p class="card-text">49° | 63°</p>
                 </div>
@@ -108,8 +108,8 @@
                 <div class="card-body">
                   <p class="card-text">Sat</p>
                 </div>
-                <img src="https://cdn-icons-png.flaticon.com/512/4150/4150973.png" 
-                  alt="weather-icon">
+                <img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/scattered-clouds-day.png" 
+                  alt="scattered-clouds-day">
                 <div class="card-body">
                   <p class="card-text">36° | 62°</p>
                 </div>
@@ -120,8 +120,8 @@
                 <div class="card-body">
                   <p class="card-text">Sun</p>
                 </div>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Weather_icon_-_sunny.svg/768px-Weather_icon_-_sunny.svg.png?20171221205138" 
-                  alt="weather-icon">
+                <img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-day.png" 
+                  alt="clear-sky-day"
                 <div class="card-body">
                   <p class="card-text">29° | 57°</p>
                 </div>
@@ -132,8 +132,8 @@
                 <div class="card-body">
                   <p class="card-text">Mon</p>
                 </div>
-                <img src="data:image/png;base64,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" 
-                  alt="weather-icon">
+                <img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/shower-rain-day.png"
+                  alt="shower-rain-day">
                 <div class="card-body">
                   <p class="card-text">42° | 68°</p>
                 </div>

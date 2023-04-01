@@ -22,29 +22,52 @@ function formatDate(date) {
   ];
   let day = days[dayIndex];
 
-  return `Current Weather ${day} ${hours}:${minutes}`;
+  return `Last updated at</br> ${day} ${hours}:${minutes}`;
+}
+
+function displayTemperature(response) {
+  let temperatureElement = document.querySelector("#temperature");
+  let cityElement = document.querySelector("#city");
+  let descriptionElement = document.querySelector("#description");
+  let humidityElement = document.querySelector("#humidity");
+  let windElement = document.querySelector("#wind");
+  let dateElement = document.querySelector("#date");
+  let iconElement = document.querySelector("#icon");
+
+  temperatureElement.innerHTML = Math.round(response.data.temperature.current);
+  cityElement.innerHTML = response.data.city;
+  descriptionElement.innerHTML = response.data.condition.description;
+  humidityElement.innerHTML = response.data.temperature.humidity;
+  windElelment.innerHTML = Math.round(response.data.wind.speed);
+  dateElement.innerHTML = formatDate(response.data.dt * 1000);
+  iconElement.setAttribute(
+    "src"
+    `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon_url}.png`;
+  );
+}
+
+function searchCity(city) {
+  let apiKey = "4a492b1ce86caaac8d4tob5cfd2a0d39";
+  let city = "Indianapolis";
+  let unit = "metric";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
+  axios.get(apiUrl).then(displayWeatherCondition);
 }
 
 function displayWeatherCondition(response) {
-  document.querySelector("#city").innerHTML = response.data.name;
+  document.querySelector("#city").innerHTML = response.data.city;
   document.querySelector("#temperature").innerHTML = Math.round(
-    response.data.main.temp
+    response.data.temperature.current
   );
 
-  document.querySelector("#humidity").innerHTML = response.data.main.humidity;
+  document.querySelector("#humidity").innerHTML =
+    response.data.temperature.humidity;
   document.querySelector("#wind").innerHTML = Math.round(
     response.data.wind.speed
   );
 
   document.querySelector("#description").innerHTML =
-    response.data.weather[0].main;
-}
-
-function searchCity(city) {
-  let apiKey = "06a1776d5696d903ee284a6600e10b4a";
-  let unit = "metric";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${unit}`;
-  axios.get(apiUrl).then(displayWeatherCondition);
+    response.data.condition.descrtiption;
 }
 
 function handleSubmit(event) {
@@ -55,8 +78,7 @@ function handleSubmit(event) {
 
 function searchLocation(position) {
   let apiKey = "4a492b1ce86caaac8d4tob5cfd2a0d39";
-  let unit = "metric";
-  let apiUrl = `https://api.shecodes.io/weather/v1/current?${city}=${city}&key=${apiKey}`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?lon={lon}&lat={lat}&key=${apiKey}`;
   axios.get(apiUrl).then(displayWeatherCondition);
 }
 
