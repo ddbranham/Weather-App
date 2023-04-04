@@ -4,7 +4,7 @@ function formatDate(date) {
     hours = `0${hours}`;
   }
 
-  let minutes = currentTime.getMinutes();
+  let minutes = date.getMinutes();
   if (minutes < 10) {
     minutes = `0${minutes}`;
   }
@@ -22,7 +22,7 @@ function formatDate(date) {
   ];
   let day = days[dayIndex];
 
-  return `Last updated at</br> ${day} ${hours}:${minutes}`;
+  return `Last updated at </br> ${day} ${hours}:${minutes}`;
 }
 
 function displayTemperature(response) {
@@ -41,10 +41,8 @@ function displayTemperature(response) {
   descriptionElement.innerHTML = response.data.condition.description;
   humidityElement.innerHTML = response.data.temperature.humidity;
   windElement.innerHTML = Math.round(response.data.wind.speed);
-  dateElement.innerHTML = formatDate(response.data.dt * 1000);
-  iconElement.setAttribute(
-    "src"`http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon_url}.png`
-  );
+  dateElement.innerHTML = formatDate(new Date(response.data.time * 1000));
+  iconElement.setAttribute("src", response.data.condition.icon_url);
   iconElement.setAttribute("alt", response.data.condition.icon);
 }
 
@@ -81,13 +79,11 @@ function displayCelsiusTemperature(event) {
 
 let celsiusTemperature = null;
 
-let form = document.querySelector("search-form");
+let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
 
-let fahrenheitLink = document.querySelector("fahrenheit-link");
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
 
-let celsiusLink = document.querySelector("celsius-link");
+let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
-
-search("Indianapolis");
