@@ -25,14 +25,13 @@ function formatDate(date) {
   return `Last updated at </br> ${day} ${hours}:${minutes}`;
 }
 
-function displayForecast() {
+function displayForecast(response) {
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = `<div class="row">`;
-  let days = ["Thu", "Fri", "Sat"]; 
+  let days = ["Thu", "Fri", "Sat", "Sun"]; 
   days.forEach(function (day) {
-    forecastHTML = forecastHTML +
-    `
+    forecastHTML = `${forecastHTML}
     <div class="col-2">   
       <div class="weather-forecast-date">${day}</div>
         <img 
@@ -48,7 +47,13 @@ function displayForecast() {
         </div>
       </div>
   `;
-  });
+});
+
+function getForecast(city) {
+  let apiKey = "4a492b1ce86caaac8d4tob5cfd2a0d39";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key={apiKey}`;
+  axios.get(apiUrl).then(displayForcast);
+}
   
 function displayTemperature(response) {
   let temperatureElement = document.querySelector("#temperature");
@@ -67,8 +72,13 @@ function displayTemperature(response) {
   humidityElement.innerHTML = response.data.temperature.humidity;
   windElement.innerHTML = Math.round(response.data.wind.speed);
   dateElement.innerHTML = formatDate(new Date(response.data.time * 1000));
-  iconElement.setAttribute("src", response.data.condition.icon_url);
-  iconElement.setAttribute("alt", response.data.condition.icon);
+  iconElement.setAttribute(
+    "src", response.data.condition.icon_url);
+  iconElement.setAttribute(
+    "alt", response.data.condition.icon);
+  
+  getForecast(response.data.city);
+
 }
 
 function search(city) {
@@ -114,4 +124,4 @@ let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
 search("Indianapolis");
-displayForecast();
+
