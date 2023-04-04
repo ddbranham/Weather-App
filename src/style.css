@@ -72,16 +72,12 @@ units .active:hover {
   text-align: center;
 }
 
-.card-body {
+.five-day-forecast {
   text-align: center;
 }
 
 .card-text-day {
   font-weight: bold;
-}
-
-.weather-icon {
-  text-align: center;
 }
 
 .search-form {

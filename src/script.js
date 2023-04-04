@@ -25,6 +25,31 @@ function formatDate(date) {
   return `Last updated at </br> ${day} ${hours}:${minutes}`;
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = `<div class="row">`;
+  let days = ["Thu", "Fri", "Sat"]; 
+  days.forEach(function (day) {
+    forecastHTML = forecastHTML +
+    `
+    <div class="col-2">   
+      <div class="weather-forecast-date">${day}</div>
+        <img 
+          src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-day.png" 
+          alt="" id="icon"
+          width="42"
+        />
+        <div class="weather-forecast-temperatures">
+          <span class="weather-forecast-temperature-high"><strong>61°</strong> 
+          </span>
+          <span class="weather-forecast-temperature-low"> 30° 
+          </span>
+        </div>
+      </div>
+  `;
+  });
+  
 function displayTemperature(response) {
   let temperatureElement = document.querySelector("#temperature");
   let cityElement = document.querySelector("#city");
@@ -87,3 +112,6 @@ fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
 
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
+
+search("Indianapolis");
+displayForecast();
