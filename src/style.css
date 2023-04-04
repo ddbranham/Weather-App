@@ -64,7 +64,7 @@ units .active:hover {
   width: 100px;
 }
 
-.weather-humidity-wind {
+.col-6 {
   color: #000;
   font-weight: bold;
   list-style: none;
@@ -76,10 +76,12 @@ units .active:hover {
   text-align: center;
 }
 
+.card-text-day {
+  font-weight: bold;
+}
+
 .weather-icon {
-  height: 40px;
   text-align: center;
-  width: 40px;
 }
 
 .search-form {
