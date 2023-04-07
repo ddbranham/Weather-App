@@ -20,7 +20,7 @@
                     <div class="col-6">
                       <input
                         type="search"
-                        placeholder="Type a city.."
+                        placeholder="Enter a city.."
                         autofocus="on"
                         autocomplete="off"
                         id="city-input"
@@ -42,31 +42,30 @@
               </ul>            
               <h1 id="city"></h1>
               <h2>
-              <span class="temperature" id="temperature"></span
-              >
-              <span class="units">
-               <a href="#" id="celsius-link" class="active">°C</a> |
-               <a href="#" id="fahrenheit-link">°F</a>
-              </span>
+                <span class="temperature" id="temperature">
+                </span>
+                <span class="units">
+                  °F
+                </span>
               </h2>                     
-            <img
-            src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-day.png" 
-            alt="clear-sky-day"
-            class="weather-icon-top-center"
-            id="icon">    
-            <h3 class="humidity-wind" id="description">            
-            </h3>
-             <div class="col-6">
+              <img
+                src="" 
+                alt=""
+                class="weather-icon-top-center"
+                id="icon"
+              />    
+            <div class="humidity-wind" id="description">            
+             <div class="col">
               <ul>
                 <li>Humidity: 
                   <span id="humidity"></span>%
                 </li>
                 <li>Wind: <span
-                  id="wind"></span> km/h
+                  id="wind"></span> m/h
                 </li>
               </ul>
-          </div> 
-        </div>
+             </div> 
+            </div>
       </div>
   
       <small>
@@ -86,6 +85,6 @@
           </div>                                              
         </div>
       </div>         
-    <script src="src/script.js"></script>
+    <script src="src/index.js"></script>
   </body>
 </html>
