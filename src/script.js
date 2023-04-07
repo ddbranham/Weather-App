@@ -22,32 +22,52 @@ function formatDate(date) {
   ];
   let day = days[dayIndex];
 
-  return `Last updated at </br> ${day} ${hours}:${minutes}`;
+  return `Last updated </br> ${day} ${hours}:${minutes}`;
+}
+
+function formatDay(timestamp) {
+  let date = new Date(timestamp *1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return day[day];
 }
 
 function displayForecast(response) {
-  let forecastElement = document.querySelector("#forecast");
+  let forecast = response.data.daily;
 
+  let forecastElement = document.querySelector("#forecast");
+    
   let forecastHTML = `<div class="row">`;
-  let days = ["Thu", "Fri", "Sat", "Sun"]; 
-  days.forEach(function (day) {
-    forecastHTML = `${forecastHTML}
-    <div class="col-2">   
-      <div class="weather-forecast-date">${day}</div>
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+    forecastHTML =
+     forecastHTML +
+     `
+     <div class="col-2">   
+      <div class="weather-forecast-date">${formatDay
+      (newforecastDay.time)}</div>
         <img 
-          src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-day.png" 
-          alt="" id="icon"
+          src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${forecast.condition.icon_url}.png" 
+          alt="${forecastDay.condition.icon}" id="icon"
           width="42"
         />
         <div class="weather-forecast-temperatures">
-          <span class="weather-forecast-temperature-high"><strong>61°</strong> 
+          <span class="weather-forecast-temperature-max">
+            <strong>${Math.round(forecastDay.temperature.maximum)}°
+            </strong> 
           </span>
-          <span class="weather-forecast-temperature-low"> 30° 
+          <span class="weather-forecast-temperature-min"> 
+            ${Math.round(forecastDay.temperature.minimum)}° 
           </span>
         </div>
       </div>
   `;
-});
+    }
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  foredcastElement.innerHTML = forecastHTML;
 
 function getForecast(city) {
   let apiKey = "4a492b1ce86caaac8d4tob5cfd2a0d39";
@@ -77,7 +97,7 @@ function displayTemperature(response) {
   iconElement.setAttribute(
     "alt", response.data.condition.icon);
   
-  getForecast(response.data.city);
+  getForecast(response.data.daily);
 
 }
 
@@ -124,4 +144,3 @@ let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
 search("Indianapolis");
-
