@@ -2,89 +2,72 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-        <link
-          href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
-          rel="stylesheet"
-          integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
-          crossorigin="anonymous"
-        />
-        <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
-        <link rel="stylesheet" href="src/style.css" />
-        <title>Weather App</title>
-        </head>
-      <body>
-        <div class="container">
-          <div class="weather-app">
-            <form class="search-form" id="search-form">
-                <div class="row">
-                    <div class="col-6">
-                      <input
-                        type="search"
-                        placeholder="Enter a city.."
-                        autofocus="on"
-                        autocomplete="off"
-                        id="city-input"
-                        class="form-control"
-                      />
-                    </div>
-                    <div class="col-3">
-                      <input
-                        type="submit"
-                        value="Search"
-                        class="btn btn-primary w-100"
-                      />                   
-                    </div>
-            </form> 
-
-            <div class="weather-forecast" id="forecast">  
-              <ul>
-                <li id="date"></li> 
-              </ul>            
-              <h1 id="city"></h1>
-              <h2>
-                <span class="temperature" id="temperature">
-                </span>
-                <span class="units">
-                  °F
-                </span>
-              </h2>                     
-              <img
-                src="" 
-                alt=""
-                class="weather-icon-top-center"
-                id="icon"
-              />    
-            <div class="humidity-wind" id="description">            
-             <div class="col">
-              <ul>
-                <li>Humidity: 
-                  <span id="humidity"></span>%
-                </li>
-                <li>Wind: <span
-                  id="wind"></span> m/h
-                </li>
-              </ul>
-             </div> 
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="src/style.css" />
+    <title>Weather App</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="weather-app">
+        <form class="search-form" id="search-form">
+          <div class="row">
+            <div class="col-6">
+              <input
+                type="search"
+                placeholder="Enter a city.."
+                autofocus="on"
+                autocomplete="off"
+                id="city-input"
+                class="form-control"
+              />
             </div>
-      </div>
-  
-      <small>
-          This project was coded by
-          <a href="mailto:ddbranham@gmail.com">
-            Deveyon Branham
-          </a>
-          and is open sourced on 
-          <a href="https://github.com/ddbranham/Weather-App.git">
-            GitHub
-          </a>
-          and hosted on 
-          <a href="https://hilarious-sprite-c513d9.netlify.app/">
-            Netlify
-          </a>
-          </small>
-          </div>                                              
+            <div class="col-3">
+              <input
+                type="submit"
+                value="Search"
+                class="btn btn-primary w-100"
+              />
+            </div>
+          </div>
+        </form>
+
+        <div class="weather-forecast" id="forecast">
+          <ul>
+            <li id="date"></li>
+          </ul>
+          <h1 id="city"></h1>
+          <h2>
+            <span class="temperature" id="temperature"> </span>
+            <span class="units"> °F </span>
+          </h2>
+          <img src="" alt="" class="weather-icon-top-center" id="icon" />
+          <div class="humidity-wind" id="description">
+            <div class="col">
+              <ul>
+                <li>Humidity: <span id="humidity"></span>%</li>
+                <li>Wind: <span id="wind"></span> m/h</li>
+              </ul>
+            </div>
+          </div>
         </div>
-      </div>         
+        <div class="weather-forecast" id="forecast"></div>
+
+        <small>
+          This project was coded by
+          <a href="mailto:ddbranham@gmail.com"> Deveyon Branham </a>
+          and is open sourced on
+          <a href="https://github.com/ddbranham/Weather-App.git"> GitHub </a>
+          and hosted on
+          <a href="https://hilarious-sprite-c513d9.netlify.app/"> Netlify </a>
+        </small>
+      </div>
+    </div>
     <script src="src/index.js"></script>
   </body>
 </html>

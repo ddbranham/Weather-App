@@ -1,4 +1,5 @@
-function formatDate(date) {
+function formatDate(timestamp) {
+  let date = new Date(timestamp);
   let hours = date.getHours();
   if (hours < 10) {
     hours = `0${hours}`;
@@ -10,45 +11,38 @@ function formatDate(date) {
   }
 
   let dayIndex = date.getDay();
-  let days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-    "Sunday",
-  ];
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
   let day = days[dayIndex];
 
   return `Last updated </br> ${day} ${hours}:${minutes}`;
 }
 
 function formatDay(timestamp) {
-  let date = new Date(timestamp *1000);
+  let date = new Date(timestamp * 1000);
   let day = date.getDay();
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
-  return day[day];
+  return days[day];
 }
 
 function displayForecast(response) {
   let forecast = response.data.daily;
 
   let forecastElement = document.querySelector("#forecast");
-    
+
   let forecastHTML = `<div class="row">`;
   forecast.forEach(function (forecastDay, index) {
     if (index < 6) {
-    forecastHTML =
-     forecastHTML +
-     `
+      forecastHTML =
+        forecastHTML +
+        `
      <div class="col-2">   
-      <div class="weather-forecast-date">${formatDay
-      (forecastDay.time)}</div>
+      <div class="weather-forecast-date">${formatDay(forecastDay.time)}
+      </div>
+
         <img 
-          src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${forecastDay.condition.icon_url}.png" 
+          src="http://shecodes-assets.s3.amazonaws.com/ap
+          i/weather/icons/${forecastDay.condition.icon_url}.png" 
           alt="${forecastDay.condition.icon}" id="icon"
           width="42"
         />
@@ -68,15 +62,15 @@ function displayForecast(response) {
 
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
+}
 
 function getForecast(city) {
-  console.log(city);
   let apiKey = "4a492b1ce86caaac8d4tob5cfd2a0d39";
   let unit = "imperial";
   let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=${unit}`;
   axios.get(apiUrl).then(displayForecast);
 }
-  
+
 function displayTemperature(response) {
   let temperatureElement = document.querySelector("#temperature");
   let cityElement = document.querySelector("#city");
@@ -95,11 +89,11 @@ function displayTemperature(response) {
   windElement.innerHTML = Math.round(response.data.wind.speed);
   dateElement.innerHTML = formatDate(response.data.time * 1000);
   iconElement.setAttribute(
-    "src", 
-    `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon_url}.png`
+    "src",
+    `http://shecodes-assets.s3.amazonaws.com/api/weather/icons_url/${response.data.condition.icon}.png`
   );
   iconElement.setAttribute("alt", response.data.condition.icon);
-  
+
   getForecast(response.data.city);
 }
 
@@ -118,4 +112,4 @@ function handleSubmit(event) {
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
 
-search("Indianapolis");
+search("Chicago");
